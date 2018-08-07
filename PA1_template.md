@@ -1,6 +1,6 @@
 ---
 title: "assignment1"
-output: html_document
+output: md_document
 ---
 
 ```{r setup, include=FALSE}
@@ -74,7 +74,7 @@ activitydt[is.na(steps), "steps"] <- activitydt[, c(lapply(.SD, median, na.rm = 
 ```
 
 ```{r q3.3, echo=TRUE}
-data.table::fwrite(x = activityDT, file = "data/tidyData.csv", quote = FALSE)
+data.table::fwrite(x = activitydt, file = "data/tidyData.csv", quote = FALSE)
 ```
 
 ```{r q3.4, echo=TRUE}
@@ -105,5 +105,4 @@ Intervaldt <- activitydt[, c(lapply(.SD, mean, na.rm = TRUE)), .SDcols = c("step
 
 ggplot(Intervaldt , aes(x = interval , y = steps, color=`weekday or weekend`)) + geom_line() + labs(title = "Daily steps by week", x = "Interval", y = "number of steps") + facet_wrap(~`weekday or weekend` , ncol = 1, nrow=2)
 ```
-
 
